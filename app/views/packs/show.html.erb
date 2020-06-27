@@ -1,19 +1,25 @@
 <div class="container">
-    <nav aria-label="breadcrumb">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#">Home</a></li>
-        <li class="breadcrumb-item"><a href="#">Product Detail</a></li>
-        <li class="breadcrumb-item active" aria-current="page"><%= @pack.product_name %></li>
-      </ol>
-    </nav>
-    <div class="row mt-3">
-        <div class="col-6">
-            <img src="<%= url_for(@pack.image) %>" class="img-fluid" >
-        </div>
-        <div class="col-6">
-            <p><%= @pack.product_name %></p>
-            <p><%= @pack.desc %></p>
-            <p><%= @pack.company_name %></p>
-        </div>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#">Home</a></li>
+      <li class="breadcrumb-item"><a href="#">Product Detail</a></li>
+      <li class="breadcrumb-item active" aria-current="page"><%= @pack.product_name %></li>
+    </ol>
+  </nav>
+  <div class="row mt-4">
+    <div class="col-6">
+      <% if @pack.image.attached? %>
+        <img src="<%= url_for(@pack.image) %>" class="img-fluid">
+      <% else %>
+        <img src="http://via.placeholder.com/640x360?text=No+Image" alt="" class="img-fluid">
+      <% end %>
     </div>
+    <div class="col-6">
+      <h2><%= @pack.product_name %></h2>
+      <p><%= @pack.desc %></p>
+      <hr>
+      <h5>설명</h5>
+      <p><%= @pack.company_name %></p>
+    </div>
+  </div>
 </div>

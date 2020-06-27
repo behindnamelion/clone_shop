@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :posts
-  resources :users
+  # resources :users
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  get 'packs/index'
-  get 'packs/show/:id' => "packs#show"
+  resources :packs, only: [:index, :show]
   get 'home/index'
   
   root 'home#index'
