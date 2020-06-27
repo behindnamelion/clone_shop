@@ -74,6 +74,8 @@ ko:
       action_label: "%{title} 선택됨"
       labels:
         destroy: "삭제"
+        publish: "공개 처리"
+        unpublish: "비공개 처리"
     comments:
       created_at: "작성시간"
       resource_type: "첨부파일 형태"
