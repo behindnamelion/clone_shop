@@ -7,6 +7,9 @@ class Pack < ApplicationRecord
     scope :published, -> { where(is_publish: true) }
     scope :unpublished, -> { where(is_publish: false) }
     
+    has_many :carts, dependent: :destroy
+    has_many :users, through: :carts
+    
     def self.set_dummy_datas
       20.times do
         pack = self.new(
