@@ -8,7 +8,10 @@
           <% end %>
           <div class="card-body text-center">
             <h5 class="card-title"><%= pack.product_name %></h5>
-            <p class="card-text"><%= pack.desc %></p>
+            <p class="card-text">
+              <%= number_to_currency(pack.price) %><br>
+              <%= pack.desc %>
+            </p>
             <a href="/packs/<%= pack.id %>" class="btn btn-primary">이동</a>
           </div>
         </div>
