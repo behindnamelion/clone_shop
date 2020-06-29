@@ -19,7 +19,7 @@ class Pack < ApplicationRecord
           price: [2000, 3000, 4000].sample
         )
     
-        pack.image.attach(io: open(Rails.root.join("lib", "assets", "sample.png")), filename: "sample.png")
+        pack.image.attach(io: open(Rails.root.join("lib", "assets", "sample.jpg")), filename: "sample.jpg")
         pack.save
       end
     end
