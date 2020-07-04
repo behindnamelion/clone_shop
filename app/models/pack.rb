@@ -10,6 +10,9 @@ class Pack < ApplicationRecord
     has_many :carts, dependent: :destroy
     has_many :users, through: :carts
     
+    has_many :order_items, dependent: :destroy
+    has_many :orders, through: :order_items
+    
     def self.set_dummy_datas
       20.times do
         pack = self.new(

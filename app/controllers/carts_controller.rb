@@ -3,6 +3,15 @@ class CartsController < ApplicationController
 
   def index
     @carts = current_user.carts
+    @product_price = 0
+
+    @carts.each do |cart|
+      @product_price += cart.quantity * cart.pack.price
+    end
+    # 배송비를 일단 기본 2500원으로 산정합니다.
+    @shipping_fee = 2500
+    
+    @total_price = @product_price + @shipping_fee
   end
 
   def create
