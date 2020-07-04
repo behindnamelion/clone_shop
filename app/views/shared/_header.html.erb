@@ -10,6 +10,9 @@
       <a class="nav-item nav-link" href="#">추천</a>
       <a class="nav-item nav-link" href="#">공지</a>
       <% if user_signed_in? %>
+        <a class="nav-item nav-link" href="/carts">
+          <%= icon('fas', 'cart-arrow-down') %>
+        </a>
         <div class="dropdown">
           <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <%= current_user.email %>

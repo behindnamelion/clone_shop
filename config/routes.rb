@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   resources :packs, only: [:index, :show]
-  resources :carts, only: [:create]
+  resources :carts, only: [:create, :index]
   get 'home/index'
   
   root 'home#index'
