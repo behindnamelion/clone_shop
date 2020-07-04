@@ -15,7 +15,12 @@ class CartsController < ApplicationController
   end
 
   def create
-    cart = Cart.new(pack_id: params[:pack_id], user: current_user, quantity: params[:quantity])
+    cart = Cart.new(
+      pack_id: params[:pack_id], 
+      user: current_user, 
+      quantity: params[:quantity]
+    )
+      
     sample_carts = current_user.carts
     present_cart = sample_carts.find_by(pack_id: params[:pack_id])
 

@@ -10,7 +10,7 @@
 					<p class="card-text">수량 : <%= item.quantity %></p>
 					<a href="#" class="card-link">수정</a>
 					<a href="#" class="card-link">삭제</a>
-					<p class="card-text">가격 : <%= number_to_currency(item.quantity * item.pack.price) %></p>
+					<p class="card-text">가격 : <%= item_to_currency(item) %></p>
 				</div>
 			</div>
 		<% end %>
