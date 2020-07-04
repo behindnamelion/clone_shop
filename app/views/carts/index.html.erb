@@ -16,34 +16,19 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>
-              <a href="" class="ml-3"><%= icon("fas", "times-circle") %></a>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-            <td>
-              <a href="" class="ml-3"><%= icon("fas", "times-circle") %></a>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td colspan="2">Larry the Bird</td>
-            <td>
-              <span>2000원</span>
-            </td>
-            <td>
-              <a href="" class="ml-3"><%= icon("fas", "times-circle") %></a>
-            </td>
-          </tr>
+          <% @carts.each do |cart| %>
+            <tr>
+              <th scope="row"><%= cart.pack.product_name %></th>
+              <td><%= number_to_currency(cart.pack.price) %></td>
+              <td><%= cart.quantity %></td>
+              <td><%= number_to_currency(cart.pack.price * cart.quantity) %></td>
+              <td>
+                <a href="/carts/<%= cart.id %>" class="ml-3" data-method="delete" data-confirm="진짜 삭제하시겠습니까?">
+                    <%= icon("fas", "times-circle") %>
+                </a>
+              </td>
+            </tr>
+          <% end %>
         </tbody>
       </table>
     </div>

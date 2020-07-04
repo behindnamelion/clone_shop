@@ -23,18 +23,32 @@
       <hr>필수 옵션 선택</hr>
       <form action="/carts" method="POST">
         <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-      
         <input type="hidden" name="pack_id" value="<%= @pack.id %>">
-        
+
         <div class="form-group">
           <label for="quantity">수량</label>
-          <input type="number" name="quantity" value="1" class="form-control">
+          <select name="quantity" id="quantity" class="form-control">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
         </div>
+
+        <button type="submit" class="btn btn-outline-dark">장바구니 등록</button>
       
-        <div class="mt-4">
-          <button type="submit" class="btn btn-outline-dark">장바구니 등록</button>
-        </div>
       </form>
     </div>
   </div>
 </div>
+
+<script>
+  <% if flash[:notice].present? %>
+    result = confirm("<%= flash[:notice] %>")
+    
+    if(result){
+      location.href = "/carts"
+    }
+  <% end %>
+</script>
