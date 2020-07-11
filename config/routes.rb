@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :carts, only: [:create, :index, :destroy]
   resources :orders, only: [:create, :show]
   get 'home/index'
+  get "mypage" => "home#mypage"
   
   root 'home#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
