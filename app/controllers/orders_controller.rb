@@ -1,4 +1,10 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!, only: [:index, :show]
+
+  def index
+    @orders = current_user.orders
+  end
+
   def create
     order = Order.create(user: current_user)
     carts = Cart.where(id: params[:cart_id])
@@ -15,5 +21,5 @@ class OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
   end
-  
+
 end

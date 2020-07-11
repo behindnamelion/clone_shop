@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   resources :packs, only: [:index, :show]
   resources :carts, only: [:create, :index, :destroy]
-  resources :orders, only: [:create, :show]
+  resources :orders, only: [:create, :show, :index]
   get 'home/index'
   get "mypage" => "home#mypage"
   
