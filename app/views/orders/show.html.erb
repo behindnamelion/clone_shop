@@ -36,12 +36,30 @@
 
 			<div class="form-group">
 				<label class="d-block">주소</label>
-				<a href="#" class="btn btn-outline-dark">주소 검색</a>
-				<input type="text" name="post_code" class="form-control mt-2">
-				<input type="text" name="address_1" class="form-control mt-2">
-				<input type="text" name="address_2" class="form-control mt-2">
+				<a href="#" class="btn btn-outline-dark" id="search_address_btn">주소 검색</a>
+				<input type="text" id="post_code" name="post_code" class="form-control mt-2">
+				<input type="text" id="address_1" name="address_1" class="form-control mt-2">
+				<input type="text" id="address_2" name="address_2" class="form-control mt-2">
 			</div>
 		</form>
 	</div>
 </div>
 </div>
+
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+<script>
+	$("#search_address_btn").on("click", function(e){
+		e.preventDefault();
+		postCodePopup();
+	})
+
+	function postCodePopup(){
+		new daum.Postcode({
+				oncomplete: function(data) {
+					$("#post_code").val(data.zonecode)
+					$("#address_1").val(data.roadAddress)
+				}
+		}).open();
+	}
+</script>
