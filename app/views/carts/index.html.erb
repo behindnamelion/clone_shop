@@ -21,11 +21,10 @@
               <th scope="row"><%= cart.pack.product_name %></th>
               <td><%= number_to_currency(cart.pack.price) %></td>
               <td><%= cart.quantity %></td>
-              <td><%= item_to_currency(cart) %></td>
+              <td><%= cart_to_currency(cart) %></td>
               <td>
-                <a href="/carts/<%= cart.id %>" class="ml-3" data-method="delete" data-confirm="진짜 삭제하시겠습니까?">
-                    <%= icon("fas", "times-circle") %>
-                </a>
+                <a href="/carts/<%= cart.id %>" class="ml-3" data-method="delete" data-confirm="진짜 삭제하시겠습니까?"><%= icon("fas", "times-circle") %></a>
+                <input type="checkbox" data-remote="true" data-url="/carts/<%= cart.id %>" data-params="data=10" data-method="delete">
               </td>
             </tr>
           <% end %>
