@@ -17,21 +17,32 @@
             <th scope="col">받는분</th>
             <th scope="col">배송지</th>
             <th scope="col">주문 상태</th>
-			<th scope="col">상세보기</th>
+			      <th scope="col">상세보기</th>
           </tr>
         </thead>
         <tbody>
-    		<% @orders.each do |order| %>
-			<tr>
-				<td><%= order.created_at.strftime("%F") %></td>
-				<td><%= order.name %></td>
-				<td><%= order.address %></td>
-				<td><span class="badge badge-warning"><%= order.status %></span></td>
-				<td><a href="/orders/<%= order.id %>" class="btn btn-primary">상세 보기</a></td>
-			</tr>
-    		<% end %>
+      		<% @orders.each do |order| %>
+      			<tr>
+      				<td><%= order.created_at.strftime("%F") %></td>
+      				<td><%= order.name %></td>
+      				<td><%= order.address %></td>
+      				<td><span class="badge badge-warning"><%= order.status %></span></td>
+      				<% if order.before_payment? || order.failed? %>
+      				  <td><a href="/orders/<%= order.id %>" class="btn btn-primary">상세 보기</a></td>
+    				  <% else %>
+    				    <td></td>
+    				  <% end %>
+      			</tr>
+      		<% end %>
         </tbody>
       </table>
     </div>
   </div>
 </div>
+
+
+<script>
+  <% if flash[:notice].present? %>
+    alert("<%= flash[:notice] %>")
+  <% end %>
+</script>

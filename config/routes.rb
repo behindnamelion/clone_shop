@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'payments/create'
   get 'orders/create'
   get 'orders/show'
   get 'carts/create'
@@ -8,7 +9,10 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   resources :packs, only: [:index, :show]
   resources :carts, only: [:create, :index, :destroy]
-  resources :orders, only: [:create, :show, :index]
+  resources :orders, only: [:create, :show, :index] do
+    resources :payments, only: [:create]
+  end
+  
   get 'home/index'
   get "mypage" => "home#mypage"
   
