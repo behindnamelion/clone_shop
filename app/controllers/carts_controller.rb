@@ -23,8 +23,12 @@ class CartsController < ApplicationController
       
     cart.verified_save
     
-    flash[:notice] = "장바구니에 상품이 담겼습니다.장바구니로 이동하시겠습니까?"
-    redirect_back(fallback_location: root_path)
+    @notice = "장바구니에 상품이 담겼습니다.장바구니로 이동하시겠습니까?"
+    
+    respond_to do |format|
+      format.js
+    end
+    
   end
   
   def destroy
