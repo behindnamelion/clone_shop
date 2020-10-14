@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  get 'payments/create'
-  get 'orders/create'
-  get 'orders/show'
-  get 'carts/create'
   devise_for :users
   resources :posts
   devise_for :admin_users, ActiveAdmin::Devise.config
